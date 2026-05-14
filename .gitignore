@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# User specific
+CVd\ v1.6.odt
+output.pdf
