@@ -19,12 +19,16 @@ def main():
 
     infile = Path(inputfile)
     outfile = Path(outputfile)
-
-    if infile.suffix.lower() not in types:
-        raise ValueError("Invalid input file type detected, please use either odt, pdf, html, or docx")
-    elif outfile.suffix.lower() not in types:
-        raise ValueError("Invalid output file type detected, please use either odt, pdf, html, or docx")
- 
+    
+    if infile.exists() and outfile.exists():
+        if infile.suffix.lower() not in types:
+            raise ValueError("Invalid input file type detected, please use either odt, pdf, html, or docx")
+        elif outfile.suffix.lower() not in types:
+            raise ValueError("Invalid output file type detected, please use either odt, pdf, html, or docx")
+    elif not infile.exists():
+        raise FileNotFoundError("Input file not found, please check entries and try again")
+    else:
+        raise FileNotFoundError("Output file not found, please check entries and try again")
 
     doc = aw.Document(inputfile)
     doc.save(outputfile)
