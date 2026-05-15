@@ -1,5 +1,6 @@
 import aspose.words as aw
 import argparse
+from pathlib import Path
 
 def main():
     parser = argparse.ArgumentParser(
@@ -10,9 +11,20 @@ def main():
     parser.add_argument("--output", required=True)
 
     args = parser.parse_args()
-
+    
     inputfile = args.input
     outputfile = args.output
+
+    types = ['.odt', '.pdf', '.html', '.docx']
+
+    infile = Path(inputfile)
+    outfile = Path(outputfile)
+
+    if infile.suffix.lower() not in types:
+        raise ValueError("Invalid input file type detected, please use either odt, pdf, html, or docx")
+    elif outfile.suffix.lower() not in types:
+        raise ValueError("Invalid output file type detected, please use either odt, pdf, html, or docx")
+ 
 
     doc = aw.Document(inputfile)
     doc.save(outputfile)
