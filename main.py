@@ -4,7 +4,7 @@ from pathlib import Path
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Convert ODT document to pdf"
+        description="Covert documents to and from 'odt, ' pdf', 'html', or 'docx'"
     )
 
     parser.add_argument("--input", required=True)
