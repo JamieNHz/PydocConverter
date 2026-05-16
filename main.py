@@ -20,7 +20,7 @@ def main():
     infile = Path(inputfile)
     outfile = Path(outputfile)
     
-    if infile.exists() and outfile.exists():
+    if infile.exists():
         if infile.suffix.lower() not in types:
             raise ValueError("Invalid input file type detected, please use either odt, pdf, html, or docx")
         elif outfile.suffix.lower() not in types:
